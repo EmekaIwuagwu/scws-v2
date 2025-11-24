@@ -2,7 +2,6 @@
 Utility modules
 """
 
-from .logger import logger, setup_logging, get_logger
 from .logger import get_logger, logger, setup_logging
 from .errors import (
     AppError,
@@ -23,7 +22,6 @@ __all__ = [
     "logger",
     "get_logger",
     "setup_logging",
-    "get_logger",
     "AppError",
     "ADBConnectionError",
     "ADBDeviceNotFoundError",
