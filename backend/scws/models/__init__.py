@@ -2,6 +2,8 @@
 Pydantic models for request/response schemas
 """
 
+from .resolution import Resolution
+
 from .device import (
     ADBDevice,
     DeviceConnectionOptions,
