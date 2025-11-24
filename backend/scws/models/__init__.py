@@ -6,6 +6,7 @@ from .device import (
     ADBDevice,
     DeviceConnectionOptions,
     DeviceState,
+    Resolution,
     TransportType,
 )
 from .scrcpy import (
@@ -30,24 +31,24 @@ from .api import (
     DeviceStats,
     ErrorResponse,
     HealthCheckResponse,
+    MemoryUsage,
     MetricsResponse,
+    ServiceStatus,
     StreamConfigUpdate,
     SuccessResponse,
 )
 
 __all__ = [
-    # Device models
     "ADBDevice",
     "DeviceConnectionOptions",
     "DeviceState",
+    "Resolution",
     "TransportType",
-    # SCRCpy models
     "AudioCodec",
     "ScrcpyConfig",
     "ScrcpyServerState",
     "ScrcpyServerStatus",
     "VideoCodec",
-    # WebSocket models
     "AudioFrameData",
     "ControlEvent",
     "ControlEventType",
@@ -57,11 +58,12 @@ __all__ = [
     "VideoFrameData",
     "WSMessage",
     "WSMessageType",
-    # API models
     "DeviceStats",
     "ErrorResponse",
     "HealthCheckResponse",
+    "MemoryUsage",
     "MetricsResponse",
+    "ServiceStatus",
     "StreamConfigUpdate",
     "SuccessResponse",
 ]

@@ -60,11 +60,18 @@ class ADBConnection:
             # Create ADB device instance
             self._device = AdbDeviceTcpAsync(host=self.host, port=self.port, default_timeout_s=10)
 
-            # Connect (using public key authentication if available)
-            signer = PythonRSASigner.FromRSAKeyPath(
-                "/root/.android/adbkey"
-            )  # Default ADB key path
-            await self._device.connect(rsa_keys=[signer], auth_timeout_s=10)
+            # Try to connect with RSA keys if available
+            rsa_keys = []
+            try:
+                import os
+                key_path = os.path.expanduser("~/.android/adbkey")
+                if os.path.exists(key_path):
+                    signer = PythonRSASigner.FromRSAKeyPath(key_path)
+                    rsa_keys = [signer]
+            except Exception:
+                pass  # Continue without keys
+
+            await self._device.connect(rsa_keys=rsa_keys, auth_timeout_s=10)
 
             self._connected = True
             self._connection_time = datetime.now()
